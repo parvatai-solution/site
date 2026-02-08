@@ -54,11 +54,13 @@
 
     <style>
         body {
-            background-color: #050505;
+            background-color: #030303;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(188, 19, 254, 0.03), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 243, 255, 0.03), transparent 25%);
             color: #ffffff;
             overflow-x: hidden;
             cursor: none;
-            /* Custom cursor */
         }
 
         /* Custom Cursor */
@@ -98,50 +100,101 @@
             z-index: 50;
         }
 
-        /* Glassmorphism Utilities */
+        /* Premium Glassmorphism */
         .glass-panel {
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+            position: relative;
+            overflow: hidden;
         }
 
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            opacity: 0.5;
+        }
+
+        /* Premium Button */
         .glass-button {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.4s, transform 0.4s;
+        }
+
+        .glass-button:hover::after {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .glass-button:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #00f3ff;
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+            border-color: rgba(0, 243, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.15);
+            transform: translateY(-2px);
         }
 
-        /* Gradient Text */
+        /* Luxurious Text Gradients */
         .text-gradient {
-            background: linear-gradient(to right, #ffffff, #94a3b8);
+            background: linear-gradient(to bottom right, #ffffff 30%, #94a3b8 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .text-gradient-accent {
-            background: linear-gradient(135deg, #00f3ff 0%, #bc13fe 100%);
+            background: linear-gradient(135deg, #22d3ee 0%, #00f3ff 25%, #bc13fe 75%, #d946ef 100%);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: gradient-shift 5s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* Abstract Background Orbs */
         .orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
+            filter: blur(100px);
+            opacity: 0.3;
             z-index: -1;
+            mix-blend-mode: screen;
         }
 
         /* Campaign Poster Styles */
@@ -218,7 +271,8 @@
                     <i data-lucide="mountain"
                         class="relative text-neon-cyan w-6 h-6 md:w-7 md:h-7 rotate-0 group-hover:rotate-12 transition-transform duration-500"></i>
                 </div>
-                <span class="font-display text-xl md:text-2xl font-bold tracking-tight">
+                <span
+                    class="font-display text-xl md:text-2xl font-bold tracking-tight drop-shadow-[0_0_10px_rgba(0,243,255,0.2)]">
                     Parvat<span class="text-neon-cyan">AI</span> Solutions
                 </span>
             </div>
@@ -274,9 +328,9 @@
                     GenZ Security Redefined
                 </div>
 
-                <h1 class="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6">
+                <h1 class="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-tight mb-8 tracking-tighter">
                     Your Digital <br />
-                    <span class="text-gradient-accent">Bodyguard.</span>
+                    <span class="text-gradient-accent drop-shadow-[0_0_30px_rgba(188,19,254,0.4)]">Bodyguard.</span>
                 </h1>
 
                 <p class="text-gray-400 text-lg md:text-xl mb-8 max-w-lg leading-relaxed">
@@ -286,7 +340,7 @@
 
                 <div class="flex flex-col sm:flex-row gap-4">
                     <!-- Pre Book Button (Mailto) -->
-                    <a href="mailto:parvataicompany@gmail.com?subject=Pre-book%20ParvatAI%20Solutions%20Subscription&body=Hi%20ParvatAI%20Solutions%20Team,%0A%0AI%20am%20interested%20in%20pre-booking%20the%20ParvatAI%20Solutions%20subscription.%20Please%20keep%20me%20updated%20on%20the%20launch.%0A%0AThanks!"
+                    <a href="mailto:support@parvataisolutions.in?subject=Pre-book%20ParvatAI%20Solutions%20Subscription&body=Hi%20ParvatAI%20Solutions%20Team,%0A%0AI%20am%20interested%20in%20pre-booking%20the%20ParvatAI%20Solutions%20subscription.%20Please%20keep%20me%20updated%20on%20the%20launch.%0A%0AThanks!"
                         class="group relative overflow-hidden bg-neon-cyan text-black font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform">
                         <span>Pre-book Subscription</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
@@ -296,8 +350,7 @@
                     </a>
 
                     <!-- Early Access (WhatsApp) -->
-                    <a href="https://chat.whatsapp.com/" target="_blank"
-                        onclick="alert('Redirecting to ParvatAI Solutions Early Access WhatsApp Group...')"
+                    <a href="https://whatsapp.com/channel/0029Va6z01r0waju8Zi6Oj2t" target="_blank"
                         class="glass-button text-white font-medium py-4 px-8 rounded-xl flex items-center justify-center gap-2">
                         <i data-lucide="message-circle" class="w-5 h-5"></i>
                         Join Early Access
@@ -354,47 +407,63 @@
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Problem Card -->
                 <div
-                    class="glass-panel p-6 md:p-8 rounded-3xl border-l-4 border-red-500 hover:bg-red-500/5 transition-colors group">
-                    <div class="flex justify-between items-start mb-6">
-                        <h3 class="font-display text-2xl font-bold">The Problem</h3>
-                        <i data-lucide="alert-triangle" class="text-red-500 w-8 h-8"></i>
+                    class="glass-panel p-8 md:p-10 rounded-3xl border-l-4 border-red-500 hover:bg-red-500/5 transition-all duration-300 group hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(239,68,68,0.1)]">
+                    <div class="flex justify-between items-start mb-8">
+                        <h3 class="font-display text-3xl font-bold">The Problem</h3>
+                        <div
+                            class="w-12 h-12 bg-red-500/10 rounded-full flex items-center justify-center group-hover:bg-red-500/20 transition-colors">
+                            <i data-lucide="alert-triangle" class="text-red-500 w-6 h-6"></i>
+                        </div>
                     </div>
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="x" class="text-red-500 w-4 h-4"></i>
-                            Generic antiviruses are reactive, not proactive.
+                    <ul class="space-y-6 text-gray-300 text-lg">
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="x" class="text-red-500 w-5 h-5 mt-1 flex-shrink-0"></i>
+                            <span class="leading-relaxed">Generic antiviruses are reactive, waiting for attacks instead
+                                of preventing them.</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="x" class="text-red-500 w-4 h-4"></i>
-                            Personal data leaks on corporate devices.
+                        <li class="flex items-center gap-4">
+                            <i data-lucide="x" class="text-red-500 w-5 h-5 flex-shrink-0"></i>
+                            <span>Personal data leaks on corporate devices.</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="x" class="text-red-500 w-4 h-4"></i>
-                            Complex security settings nobody understands.
+                        <li class="flex items-center gap-4">
+                            <i data-lucide="x" class="text-red-500 w-5 h-5 flex-shrink-0"></i>
+                            <span>Complex security settings nobody understands.</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Solution Card -->
                 <div id="solution"
-                    class="glass-panel p-6 md:p-8 rounded-3xl border-l-4 border-neon-cyan hover:bg-neon-cyan/5 transition-colors">
-                    <div class="flex justify-between items-start mb-6">
-                        <h3 class="font-display text-2xl font-bold text-white">ParvatAI Solutions</h3>
-                        <i data-lucide="check-circle-2" class="text-neon-cyan w-8 h-8"></i>
+                    class="glass-panel p-8 md:p-10 rounded-3xl border-l-4 border-neon-cyan hover:bg-neon-cyan/5 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,243,255,0.1)] group">
+                    <div class="flex justify-between items-start mb-8">
+                        <h3 class="font-display text-3xl font-bold text-white">ParvatAI Solutions</h3>
+                        <div
+                            class="w-12 h-12 bg-neon-cyan/10 rounded-full flex items-center justify-center group-hover:bg-neon-cyan/20 transition-colors">
+                            <i data-lucide="check-circle-2" class="text-neon-cyan w-6 h-6"></i>
+                        </div>
                     </div>
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="check" class="text-neon-cyan w-4 h-4"></i>
-                            <span class="text-white font-medium">Adaptive AI</span> that learns your specific behavior
-                            patterns.
+                    <ul class="space-y-6 text-gray-300 text-lg">
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="mt-1 w-5 h-5 rounded-full bg-neon-cyan/20 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check" class="text-neon-cyan w-3 h-3"></i>
+                            </div>
+                            <span class="leading-relaxed"><strong class="text-white">Adaptive AI</strong> that learns
+                                your behavior to predict threats.</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="check" class="text-neon-cyan w-4 h-4"></i>
-                            Seamless integration (Zero-touch configuration).
+                        <li class="flex items-center gap-4">
+                            <div
+                                class="w-5 h-5 rounded-full bg-neon-cyan/20 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check" class="text-neon-cyan w-3 h-3"></i>
+                            </div>
+                            <span>Seamless integration (Zero-touch configuration).</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="check" class="text-neon-cyan w-4 h-4"></i>
-                            Real-time anomaly detection for "Smart Home" level simplicity.
+                        <li class="flex items-center gap-4">
+                            <div
+                                class="w-5 h-5 rounded-full bg-neon-cyan/20 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="check" class="text-neon-cyan w-3 h-3"></i>
+                            </div>
+                            <span>Real-time anomaly detection for "Smart Home" simplicity.</span>
                         </li>
                     </ul>
                 </div>
@@ -484,15 +553,14 @@
             </div>
 
             <!-- Horizontal Scroll Container (Mobile Swipe / Desktop Grid) -->
-            <div
+            <div id="campaignTrack"
                 class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible pb-8 md:pb-0 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
 
                 <!-- Poster 1: The Glitch -->
                 <div
-                    class="group relative min-w-[85vw] md:min-w-0 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer snap-center">
-                    <div
-                        class="absolute inset-0 bg-neutral-900 poster-glitch transition-transform duration-500 group-hover:scale-110">
-                    </div>
+                    class="campaign-card group relative min-w-[85vw] md:min-w-0 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer snap-center">
+                    <img src="assets/images/Invisible%20Shield.png" alt="Invisible Shield"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
                     </div>
                     <div class="absolute bottom-6 left-6 right-6">
@@ -504,21 +572,9 @@
 
                 <!-- Poster 2: The Network -->
                 <div
-                    class="group relative min-w-[85vw] md:min-w-0 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer snap-center">
-                    <div class="absolute inset-0 bg-indigo-900 transition-transform duration-500 group-hover:scale-110">
-                        <!-- Abstract CSS Shapes -->
-                        <div
-                            class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neon-purple/40 to-transparent">
-                        </div>
-                        <div class="grid grid-cols-6 gap-1 w-full h-full opacity-20">
-                            <div class="bg-white/10 h-full"></div>
-                            <div class="bg-white/10 h-full"></div>
-                            <div class="bg-white/10 h-full"></div>
-                            <div class="bg-transparent h-full"></div>
-                            <div class="bg-white/10 h-full"></div>
-                            <div class="bg-white/10 h-full"></div>
-                        </div>
-                    </div>
+                    class="campaign-card group relative min-w-[85vw] md:min-w-0 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer snap-center">
+                    <img src="assets/images/Digital_DNA.png" alt="Digital DNA"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
                     </div>
                     <div class="absolute bottom-6 left-6 right-6">
@@ -530,13 +586,9 @@
 
                 <!-- Poster 3: The Future -->
                 <div
-                    class="group relative min-w-[85vw] md:min-w-0 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer snap-center">
-                    <div
-                        class="absolute inset-0 bg-gray-900 transition-transform duration-500 group-hover:scale-110 flex items-center justify-center">
-                        <div class="w-32 h-32 border-4 border-white rounded-full flex items-center justify-center">
-                            <div class="w-20 h-20 bg-white rounded-full animate-pulse"></div>
-                        </div>
-                    </div>
+                    class="campaign-card group relative min-w-[85vw] md:min-w-0 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer snap-center">
+                    <img src="assets/images/Future_Proof.png" alt="Future Proof"
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
                     </div>
                     <div class="absolute bottom-6 left-6 right-6">
@@ -731,9 +783,8 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section - Hidden as requested
     <section id="testimonials" class="py-12 md:py-20 px-6 relative overflow-hidden bg-black">
-        <!-- Background Mesh Decoration (Visible on All Devices) -->
         <div class="absolute inset-x-0 top-0 h-full w-full pointer-events-none z-0">
             <div
                 class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-neon-cyan/10 blur-[100px] md:blur-[150px] rounded-full opacity-60">
@@ -751,7 +802,6 @@
             </div>
 
             <div class="relative max-w-5xl mx-auto">
-                <!-- Navigation Arrows -->
                 <button id="prevBtn"
                     class="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-black/50 backdrop-blur-md text-white hover:bg-neon-cyan hover:text-black hover:border-neon-cyan transition-all -ml-6 lg:-ml-12 group">
                     <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
@@ -761,112 +811,163 @@
                     <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
                 </button>
 
-                <!-- Scroll Container -->
                 <div id="testimonialTrack"
                     class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:px-0 scroll-smooth items-center">
 
-                    <!-- Card 1 -->
-                    <div class="testimonial-card min-w-[85vw] md:min-w-[400px] snap-center transition-all duration-500 opacity-50 scale-90"
+                    <div class="testimonial-card min-w-[85vw] md:min-w-[450px] snap-center transition-all duration-500 opacity-50 scale-90"
                         data-index="0">
                         <div
-                            class="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center shadow-2xl">
-                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-neon-purple to-pink-600 p-1 mb-6">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jessica" alt="User"
-                                    class="w-full h-full rounded-full bg-black">
+                            class="glass-panel p-8 md:p-10 rounded-3xl h-full flex flex-col items-center text-center relative overflow-hidden group">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-neon-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
-                            <div class="flex gap-1 text-neon-cyan mb-4">
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <div class="relative z-10 flex flex-col items-center">
+                                <div
+                                    class="w-20 h-20 rounded-full p-[2px] bg-gradient-to-br from-neon-purple to-pink-600 mb-6 shadow-lg shadow-neon-purple/20">
+                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jessica" alt="User"
+                                        class="w-full h-full rounded-full bg-black border-2 border-black">
+                                </div>
+                                <div class="flex gap-1 text-neon-cyan mb-6">
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                </div>
+                                <p class="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-8">"As a
+                                    content creator, my data is my life.
+                                    ParvatAI Solutions gives me the peace of mind knowing my intellectual property is
+                                    safe."
+                                </p>
+                                <div>
+                                    <h4 class="font-display font-bold text-white text-lg tracking-wide">Jessica M.</h4>
+                                    <p class="text-sm text-neon-purple font-medium uppercase tracking-wider mt-1">
+                                        Digital Artist</p>
+                                </div>
                             </div>
-                            <p class="text-lg text-gray-300 italic mb-6">"As a content creator, my data is my life.
-                                ParvatAI Solutions gives me the peace of mind knowing my intellectual property is safe
-                                from
-                                leaks."
-                            </p>
-                            <h4 class="font-bold text-white">Jessica M.</h4>
-                            <p class="text-sm text-gray-500">Digital Artist</p>
                         </div>
                     </div>
 
-                    <!-- Card 2 (Initial Center) -->
-                    <div class="testimonial-card min-w-[85vw] md:min-w-[400px] snap-center transition-all duration-500 scale-100 opacity-100 z-10"
+                    <div class="testimonial-card min-w-[85vw] md:min-w-[450px] snap-center transition-all duration-500 scale-100 opacity-100 z-10"
                         data-index="1">
                         <div
-                            class="bg-white/[0.05] backdrop-blur-2xl border border-neon-cyan/40 p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center shadow-[0_0_30px_rgba(0,243,255,0.1)]">
-                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-neon-cyan to-blue-600 p-1 mb-6">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User"
-                                    class="w-full h-full rounded-full bg-black">
+                            class="glass-panel p-8 md:p-10 rounded-3xl h-full flex flex-col items-center text-center relative overflow-hidden group border-neon-cyan/30">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-neon-cyan/10 to-transparent opacity-100 transition-opacity duration-500">
                             </div>
-                            <div class="flex gap-1 text-neon-cyan mb-4">
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <div class="relative z-10 flex flex-col items-center">
+                                <div
+                                    class="w-20 h-20 rounded-full p-[2px] bg-gradient-to-br from-neon-cyan to-blue-600 mb-6 shadow-lg shadow-neon-cyan/20">
+                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User"
+                                        class="w-full h-full rounded-full bg-black border-2 border-black">
+                                </div>
+                                <div class="flex gap-1 text-neon-cyan mb-6">
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                </div>
+                                <p class="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-8">"ParvatAI
+                                    Solutions completely changed how I think about security. It's not just an antivirus,
+                                    it's like having a digital bodyguard."</p>
+                                <div>
+                                    <h4 class="font-display font-bold text-white text-lg tracking-wide">Felix K.</h4>
+                                    <p class="text-sm text-neon-cyan font-medium uppercase tracking-wider mt-1">
+                                        Cybersecurity Analyst</p>
+                                </div>
                             </div>
-                            <p class="text-lg text-gray-300 italic mb-6">"ParvatAI Solutions completely changed how I
-                                think about
-                                security. It's not just an antivirus, it's like having a digital bodyguard that actually
-                                understands me."</p>
-                            <h4 class="font-bold text-white">Felix K.</h4>
-                            <p class="text-sm text-gray-500">Cybersecurity Analyst</p>
                         </div>
                     </div>
 
-                    <!-- Card 3 -->
-                    <div class="testimonial-card min-w-[85vw] md:min-w-[400px] snap-center transition-all duration-500 opacity-50 scale-90"
+                    <div class="testimonial-card min-w-[85vw] md:min-w-[450px] snap-center transition-all duration-500 opacity-50 scale-90"
                         data-index="2">
                         <div
-                            class="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center shadow-2xl">
+                            class="glass-panel p-8 md:p-10 rounded-3xl h-full flex flex-col items-center text-center relative overflow-hidden group">
                             <div
-                                class="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 p-1 mb-6">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="User"
-                                    class="w-full h-full rounded-full bg-black">
+                                class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
-                            <div class="flex gap-1 text-neon-cyan mb-4">
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <div class="relative z-10 flex flex-col items-center">
+                                <div
+                                    class="w-20 h-20 rounded-full p-[2px] bg-gradient-to-br from-green-400 to-emerald-600 mb-6 shadow-lg shadow-green-500/20">
+                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="User"
+                                        class="w-full h-full rounded-full bg-black border-2 border-black">
+                                </div>
+                                <div class="flex gap-1 text-neon-cyan mb-6">
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                </div>
+                                <p class="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-8">"The
+                                    'Zero-touch' configuration is real. I installed it, and it just worked. No complex
+                                    settings, just pure protection."</p>
+                                <div>
+                                    <h4 class="font-display font-bold text-white text-lg tracking-wide">Sarah L.</h4>
+                                    <p class="text-sm text-green-400 font-medium uppercase tracking-wider mt-1">Tech
+                                        Entrepreneur</p>
+                                </div>
                             </div>
-                            <p class="text-lg text-gray-300 italic mb-6">"The 'Zero-touch' configuration is real. I
-                                installed it, and it just worked. No complex settings, just pure protection."</p>
-                            <h4 class="font-bold text-white">Sarah L.</h4>
-                            <p class="text-sm text-gray-500">Tech Entrepreneur</p>
                         </div>
                     </div>
 
-                    <!-- Card 4 (New) -->
-                    <div class="testimonial-card min-w-[85vw] md:min-w-[400px] snap-center transition-all duration-500 opacity-50 scale-90"
+                    <div class="testimonial-card min-w-[85vw] md:min-w-[450px] snap-center transition-all duration-500 opacity-50 scale-90"
                         data-index="3">
                         <div
-                            class="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center shadow-2xl">
-                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-red-600 p-1 mb-6">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=David" alt="User"
-                                    class="w-full h-full rounded-full bg-black">
+                            class="glass-panel p-8 md:p-10 rounded-3xl h-full flex flex-col items-center text-center relative overflow-hidden group">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
-                            <div class="flex gap-1 text-neon-cyan mb-4">
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <div class="relative z-10 flex flex-col items-center">
+                                <div
+                                    class="w-20 h-20 rounded-full p-[2px] bg-gradient-to-br from-orange-400 to-red-600 mb-6 shadow-lg shadow-red-500/20">
+                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=David" alt="User"
+                                        class="w-full h-full rounded-full bg-black border-2 border-black">
+                                </div>
+                                <div class="flex gap-1 text-neon-cyan mb-6">
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                    <i data-lucide="star"
+                                        class="w-5 h-5 fill-current drop-shadow-[0_0_8px_rgba(0,243,255,0.5)]"></i>
+                                </div>
+                                <p class="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-8">"Finally,
+                                    a security solution that doesn't slow down my workflow. It's efficient, silent, and
+                                    incredibly effective."</p>
+                                <div>
+                                    <h4 class="font-display font-bold text-white text-lg tracking-wide">David R.</h4>
+                                    <p class="text-sm text-red-500 font-medium uppercase tracking-wider mt-1">Software
+                                        Engineer</p>
+                                </div>
                             </div>
-                            <p class="text-lg text-gray-300 italic mb-6">"Finally, a security solution that doesn't slow
-                                down
-                                my workflow. It's efficient, silent, and incredibly effective."</p>
-                            <h4 class="font-bold text-white">David R.</h4>
-                            <p class="text-sm text-gray-500">Software Engineer</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    -->
 
 
     <footer id="contact" class="pt-12 md:pt-20 pb-10 px-6 relative overflow-hidden">
@@ -903,12 +1004,12 @@
                                 class="w-6 h-6 group-hover:rotate-12 transition-transform text-neon-purple"></i>
                             <span class="text-lg font-medium">9699172609</span>
                         </a>
-                        <a href="mailto:parvataicompany@gmail.com"
+                        <a href="mailto:support@parvataisolutions.in"
                             class="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4 text-gray-300 hover:text-neon-cyan transition-colors group p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5">
                             <i data-lucide="mail"
                                 class="w-6 h-6 group-hover:scale-110 transition-transform text-neon-purple"></i>
                             <span
-                                class="text-lg font-medium whitespace-nowrap overflow-hidden text-ellipsis">parvataicompany@gmail.com</span>
+                                class="text-lg font-medium whitespace-nowrap overflow-hidden text-ellipsis">support@parvataisolutions.in</span>
                         </a>
                     </div>
                 </div>
@@ -924,19 +1025,21 @@
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- Name -->
-                            <div class="space-y-2">
+                            <div class="space-y-2 group">
                                 <div class="flex justify-between items-center text-sm">
-                                    <label for="name" class="font-medium text-gray-400">Name</label>
+                                    <label for="name"
+                                        class="font-medium text-gray-400 group-focus-within:text-neon-cyan transition-colors">Name</label>
                                     <span id="nameCounter" class="text-xs text-gray-500">0/50</span>
                                 </div>
                                 <input type="text" id="name" name="name" placeholder="John Doe" required maxlength="50"
-                                    class="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all">
+                                    class="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-neon-cyan/50 focus:bg-white/10 focus:ring-1 focus:ring-neon-cyan/50 transition-all shadow-inner">
                             </div>
                             <!-- Email -->
-                            <div class="space-y-2">
-                                <label for="email" class="text-sm font-medium text-gray-400">Email</label>
+                            <div class="space-y-2 group">
+                                <label for="email"
+                                    class="text-sm font-medium text-gray-400 group-focus-within:text-neon-cyan transition-colors">Email</label>
                                 <input type="email" id="email" name="email" placeholder="john@example.com" required
-                                    class="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all">
+                                    class="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-neon-cyan/50 focus:bg-white/10 focus:ring-1 focus:ring-neon-cyan/50 transition-all shadow-inner">
                             </div>
                         </div>
 
@@ -945,7 +1048,7 @@
                             <label for="type" class="text-sm font-medium text-gray-400">Type of Question</label>
                             <div class="relative">
                                 <select id="type" name="type" required
-                                    class="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all appearance-none cursor-pointer">
+                                    class="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-neon-cyan/50 focus:bg-white/10 focus:ring-1 focus:ring-neon-cyan/50 transition-all appearance-none cursor-pointer shadow-inner">
                                     <option value="" disabled selected>Select a topic...</option>
                                     <option value="general" class="bg-neutral-900">General Inquiry</option>
                                     <option value="support" class="bg-neutral-900">Technical Support</option>
@@ -953,7 +1056,7 @@
                                     <option value="other" class="bg-neutral-900">Other</option>
                                 </select>
                                 <i data-lucide="chevron-down"
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"></i>
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
                             </div>
                         </div>
 
@@ -968,7 +1071,7 @@
                             </div>
                             <textarea id="description" name="description" rows="4" required maxlength="500"
                                 placeholder="How can we help you today?"
-                                class="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all resize-none"></textarea>
+                                class="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-4 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-neon-cyan/50 focus:bg-white/10 focus:ring-1 focus:ring-neon-cyan/50 transition-all resize-none shadow-inner"></textarea>
                         </div>
 
                         <!-- Submit Button -->
@@ -1124,129 +1227,169 @@
             if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
-        // Testimonial Carousel Logic (Infinite Loop)
-        const track = document.getElementById('testimonialTrack');
-        const originalCards = Array.from(document.querySelectorAll('.testimonial-card'));
+        // Universal Infinite Carousel Logic
+        function initCarousel(trackId, cardClass, options = {}) {
+            const track = document.getElementById(trackId);
+            if (!track) return;
+
+            const originalCards = Array.from(track.querySelectorAll(cardClass));
+            if (originalCards.length === 0) return;
+
+            let scrollTimeout;
+            let autoPlayInterval;
+
+            // Check if we should disable on desktop (specifically for Campaign grid)
+            const hideClonesOnDesktop = options.hideClonesOnDesktop || false;
+
+            // Clone Functionality
+            function setupClones() {
+                // Remove any existing clones first if re-initializing
+                track.querySelectorAll('.clone-start, .clone-end').forEach(el => el.remove());
+
+                // Append clones
+                originalCards.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    clone.classList.add('clone-end');
+                    clone.removeAttribute('id'); // Ensure unique IDs if any
+                    if (hideClonesOnDesktop) clone.classList.add('md:hidden');
+                    track.appendChild(clone);
+                });
+
+                // Prepend clones
+                [...originalCards].reverse().forEach(card => {
+                    const clone = card.cloneNode(true);
+                    clone.classList.add('clone-start');
+                    clone.removeAttribute('id');
+                    if (hideClonesOnDesktop) clone.classList.add('md:hidden');
+                    track.insertBefore(clone, track.firstChild);
+                });
+
+                // Center Initial Position
+                setTimeout(() => {
+                    // We need to account for hidden clones on desktop if applicable
+                    if (window.innerWidth >= 768 && hideClonesOnDesktop) return;
+
+                    const allCards = track.querySelectorAll(cardClass);
+                    const centerIndex = originalCards.length;
+                    const centerCard = allCards[centerIndex];
+
+                    if (centerCard) {
+                        const offset = centerCard.offsetLeft - (track.clientWidth - centerCard.offsetWidth) / 2;
+                        track.scrollLeft = offset;
+                    }
+                }, 100);
+            }
+
+            setupClones();
+
+            // Loop Logic
+            track.addEventListener('scroll', () => {
+                if (options.onScroll) options.onScroll(track);
+
+                // Debounce reset
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(checkLoop, 150);
+            });
+
+            function checkLoop() {
+                // Skip loop check on desktop if clones are hidden (standard grid mode)
+                if (window.innerWidth >= 768 && hideClonesOnDesktop) return;
+
+                const cardWidth = originalCards[0].offsetWidth + 24; // Width + gap (approx)
+                const singleSetWidth = originalCards.reduce((acc, card) => acc + card.offsetWidth + 24, 0);
+
+                // Use a safer threshold for loop reset
+                if (track.scrollLeft >= singleSetWidth * 2) {
+                    track.style.scrollBehavior = 'auto';
+                    track.scrollLeft -= singleSetWidth;
+                    track.style.scrollBehavior = 'smooth';
+                } else if (track.scrollLeft <= cardWidth / 2) {
+                    track.style.scrollBehavior = 'auto';
+                    track.scrollLeft += singleSetWidth;
+                    track.style.scrollBehavior = 'smooth';
+                }
+            }
+
+            // Auto Play
+            if (options.autoPlay) {
+                function startAutoPlay() {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = setInterval(() => {
+                        if (window.innerWidth >= 768 && hideClonesOnDesktop) return;
+
+                        const cardWidth = originalCards[0].offsetWidth + 24;
+                        track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                    }, 3000);
+                }
+
+                track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+                track.addEventListener('touchstart', () => clearInterval(autoPlayInterval));
+                track.addEventListener('mouseleave', startAutoPlay);
+
+                startAutoPlay();
+
+                // Return control to stop it externally if needed
+                return {
+                    stop: () => clearInterval(autoPlayInterval),
+                    start: startAutoPlay,
+                    scroll: (dir) => {
+                        const cardWidth = originalCards[0].offsetWidth + 24;
+                        track.scrollBy({ left: cardWidth * dir, behavior: 'smooth' });
+                    }
+                };
+            }
+        }
+
+        // Initialize Testimonials
+        const testimonialCarousel = initCarousel('testimonialTrack', '.testimonial-card', {
+            autoPlay: true,
+            onScroll: () => { updateHighlight(); }
+        });
+
+        // Initialize Campaign (Hidden Clones on Desktop)
+        initCarousel('campaignTrack', '.campaign-card', {
+            autoPlay: true,
+            hideClonesOnDesktop: true
+        });
+
+        // Navigation Buttons for Testimonials
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        let autoPlayInterval;
-        let isTransitioning = false;
-        let allCards = [];
 
-        // Clone Functionality
-        function setupInfiniteScroll() {
-            // Append clones to end
-            originalCards.forEach(card => {
-                const clone = card.cloneNode(true);
-                clone.classList.add('clone-end');
-                track.appendChild(clone);
+        if (prevBtn && nextBtn && testimonialCarousel) {
+            prevBtn.addEventListener('click', () => {
+                testimonialCarousel.scroll(-1);
+                testimonialCarousel.stop();
+                testimonialCarousel.start();
             });
-
-            // Prepend clones to start
-            [...originalCards].reverse().forEach(card => {
-                const clone = card.cloneNode(true);
-                clone.classList.add('clone-start');
-                track.insertBefore(clone, track.firstChild);
+            nextBtn.addEventListener('click', () => {
+                testimonialCarousel.scroll(1);
+                testimonialCarousel.stop();
+                testimonialCarousel.start();
             });
-
-            allCards = document.querySelectorAll('.testimonial-card');
-
-            // Initial center position (skip first set of clones)
-            setTimeout(() => {
-                const centerIndex = originalCards.length;
-                const centerCard = allCards[centerIndex];
-                if (centerCard) {
-                    const offset = centerCard.offsetLeft - (track.clientWidth - centerCard.offsetWidth) / 2;
-                    track.scrollLeft = offset;
-                }
-                updateHighlight();
-            }, 100);
         }
 
-        setupInfiniteScroll();
-
-        // Scroll Event
-        track.addEventListener('scroll', () => {
-            updateHighlight();
-            checkInfiniteScroll();
-        });
-
-        function checkInfiniteScroll() {
-            if (isTransitioning || originalCards.length === 0) return;
-
-            const cardWidth = originalCards[0].offsetWidth + 24; // Width + gap
-            const totalOriginalWidth = cardWidth * originalCards.length;
-
-            if (track.scrollLeft >= totalOriginalWidth * 2 - track.clientWidth) {
-                track.style.scrollBehavior = 'auto';
-                track.scrollLeft = track.scrollLeft - totalOriginalWidth;
-                track.style.scrollBehavior = 'smooth';
-            }
-            else if (track.scrollLeft <= cardWidth) {
-                track.style.scrollBehavior = 'auto';
-                track.scrollLeft = track.scrollLeft + totalOriginalWidth;
-                track.style.scrollBehavior = 'smooth';
-            }
-        }
-
-        // Navigation Buttons
-        prevBtn.addEventListener('click', () => {
-            scrollCarousel(-1);
-            resetAutoPlay();
-        });
-        nextBtn.addEventListener('click', () => {
-            scrollCarousel(1);
-            resetAutoPlay();
-        });
-
-        // Auto Play Logic
-        function startAutoPlay() {
-            clearInterval(autoPlayInterval);
-            autoPlayInterval = setInterval(() => {
-                scrollCarousel(1);
-            }, 3000);
-        }
-
-        function resetAutoPlay() {
-            clearInterval(autoPlayInterval);
-            startAutoPlay();
-        }
-
-        function scrollCarousel(direction) {
-            if (originalCards.length === 0) return;
-            const cardWidth = originalCards[0].offsetWidth + 24; // including gap
-            track.scrollBy({ left: cardWidth * direction, behavior: 'smooth' });
-        }
-
-        // Pause on Hover
-        track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
-        track.addEventListener('mouseleave', startAutoPlay);
-
-        // Start Auto Play
-        startAutoPlay();
-
+        // Specific Highlight Logic for Testimonials (kept separate for clarity)
         function updateHighlight() {
-            const trackCenter = track.getBoundingClientRect().left + track.offsetWidth / 2;
+            const track = document.getElementById('testimonialTrack');
+            if (!track) return;
 
-            // Use allCards (including clones) to update styles
-            if (allCards.length === 0) return;
+            const center = track.getBoundingClientRect().left + track.offsetWidth / 2;
+            const cards = track.querySelectorAll('.testimonial-card');
 
-            allCards.forEach(card => {
+            cards.forEach(card => {
                 const cardCenter = card.getBoundingClientRect().left + card.offsetWidth / 2;
-                const distance = Math.abs(trackCenter - cardCenter);
-                const maxDistance = card.offsetWidth / 2;
-
+                const dist = Math.abs(center - cardCenter);
                 const panel = card.querySelector('.glass-panel');
 
-                if (distance < maxDistance) {
-                    // Active Card
+                // Adjust threshold for mobile vs desktop if needed, standardizing on half width
+                if (dist < card.offsetWidth / 2) {
                     card.classList.remove('opacity-50', 'scale-90');
-                    card.classList.add('scale-100', 'opacity-100', 'z-10');
+                    card.classList.add('opacity-100', 'scale-100', 'z-10');
                     if (panel) panel.classList.add('border-neon-cyan/30', 'border');
                 } else {
-                    // Inactive Card
                     card.classList.add('opacity-50', 'scale-90');
-                    card.classList.remove('scale-100', 'opacity-100', 'z-10');
+                    card.classList.remove('opacity-100', 'scale-100', 'z-10');
                     if (panel) panel.classList.remove('border-neon-cyan/30', 'border');
                 }
             });
