@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whitepaper 2026 | ParvatAI Solutions</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        neon: {
+                            cyan: '#00f3ff',
+                            purple: '#bc13fe',
+                            blue: '#4f46e5',
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #030303;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(188, 19, 254, 0.03), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 243, 255, 0.03), transparent 25%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+        }
+
+        .text-gradient-accent {
+            background: linear-gradient(135deg, #22d3ee 0%, #00f3ff 25%, #bc13fe 75%, #d946ef 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 5s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Table of Contents Active State */
+        .toc-link.active {
+            color: #00f3ff;
+            border-left-color: #00f3ff;
+            padding-left: 1rem;
+            background: linear-gradient(90deg, rgba(0, 243, 255, 0.1) 0%, transparent 100%);
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col font-sans">
+
+    <!-- Navigation (Simplified) -->
+    <nav
+        class="fixed top-0 w-full z-50 transition-all duration-300 bg-black/50 backdrop-blur-xl border-b border-white/5 h-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div
+                    class="relative w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 group-hover:border-neon-cyan/50 transition-colors">
+                    <i data-lucide="mountain" class="relative text-neon-cyan w-5 h-5"></i>
+                </div>
+                <span class="font-display text-xl font-bold tracking-tight">
+                    Parvat<span class="text-neon-cyan">AI</span> Solutions
+                </span>
+            </a>
+            <a href="index.html"
+                class="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Layout -->
+    <main class="flex-grow pt-28 pb-20 px-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-4 gap-12">
+
+        <!-- Left Sidebar (Empty or Additional Info) -->
+        <aside class="hidden lg:block lg:col-span-1 border-r border-white/5 pr-8 sticky top-32 h-[calc(100vh-160px)]">
+            <div class="space-y-6">
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h3 class="text-gray-400 text-sm uppercase tracking-wider mb-2 font-bold">Document Info</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <span class="block text-xs text-gray-500">Published</span>
+                            <span class="text-white">February 2026</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-gray-500">Version</span>
+                            <span class="text-white">2.0 (Agentic Era)</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-gray-500">Author</span>
+                            <span class="text-white">ParvatAI Research Team</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#"
+                    class="block w-full py-3 bg-neon-cyan/10 border border-neon-cyan text-neon-cyan text-center rounded-xl font-bold hover:bg-neon-cyan hover:text-black transition-all">
+                    <i data-lucide="download" class="w-4 h-4 inline-block mr-2"></i> Download PDF
+                </a>
+            </div>
+        </aside>
+
+        <!-- Center Content (Scrollable) -->
+        <article class="lg:col-span-2 space-y-16">
+
+            <!-- Cover Page -->
+            <section id="cover" class="min-h-[60vh] flex flex-col justify-center border-b border-white/5 pb-16">
+                <span
+                    class="inline-block py-1 px-3 rounded-full bg-neon-purple/10 border border-neon-purple/30 text-neon-purple text-xs font-bold tracking-wider mb-6 w-fit">
+                    OFFICIAL WHITEPAPER 2026
+                </span>
+                <h1 class="font-display text-5xl md:text-7xl font-bold leading-tight mb-8">
+                    The Era of <br>
+                    <span class="text-gradient-accent">Agentic Security.</span>
+                </h1>
+                <p class="text-xl text-gray-300 leading-relaxed max-w-2xl">
+                    Redefining cyber defense with autonomous AI agents that predict, adapt, and neutralize threats in
+                    real-time without human intervention.
+                </p>
+                <div class="mt-12 flex items-center gap-4">
+                    <div class="flex -space-x-4">
+                        <img class="w-10 h-10 rounded-full border-2 border-black"
+                            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="">
+                        <img class="w-10 h-10 rounded-full border-2 border-black"
+                            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="">
+                        <img class="w-10 h-10 rounded-full border-2 border-black"
+                            src="https://api.dicebear.com/7.x/avataaars/svg?seed=David" alt="">
+                    </div>
+                    <span class="text-sm text-gray-400">Read by 10k+ security professionals</span>
+                </div>
+            </section>
+
+            <!-- Executive Summary -->
+            <section id="executive-summary" class="scroll-mt-32">
+                <h2 class="font-display text-3xl font-bold mb-6 flex items-center gap-3">
+                    <span class="text-neon-cyan">01.</span> Executive Summary
+                </h2>
+                <div
+                    class="prose prose-invert prose-lg max-w-none text-gray-300/90 columns-1 md:columns-2 gap-8 text-justify">
+                    <p class="mb-4">
+                        The traditional paradigm of cybersecurity—defined by static firewalls, signature-based
+                        detection, and reactive protocols—is collapsing under the weight of AI-driven cyber threats. As
+                        attackers leverage Large Language Models (LLMs) to automate vulnerability discovery, the defense
+                        mechanism must evolve from passive monitoring to active, autonomous intervention.
+                    </p>
+                    <p class="mb-4">
+                        ParvatAI Solutions introduces the concept of <strong>Agentic Security</strong>: a decentralized
+                        network of autonomous AI agents capable of reasoning, planning, and executing defensive
+                        maneuvers in real-time. Unlike conventional SOAR (Security Orchestration, Automation, and
+                        Response) platforms that rely on pre-defined playbooks, Agentic Security systems adapt
+                        dynamically to novel threats.
+                    </p>
+                    <p>
+                        This whitepaper outlines the architectural shift required to support this new era, detailing our
+                        proprietary "Digital Bodyguard" framework that integrates behavioral analysis with autonomous
+                        decision-making engines.
+                    </p>
+                </div>
+                <!-- Image: Agentic Abstract -->
+                <div class="mt-8 rounded-2xl overflow-hidden glass-panel border border-white/10 relative group">
+                    <div
+                        class="absolute inset-0 bg-neon-cyan/20 opacity-0 group-hover:opacity-20 transition-opacity z-10">
+                    </div>
+                    <img src="assets/images/agentic_abstract.png" alt="Agentic Security Visualization"
+                        class="w-full h-64 md:h-80 object-cover transform group-hover:scale-105 transition-transform duration-700">
+                </div>
+            </section>
+
+            <!-- The Threat Landscape -->
+            <section id="threat-landscape" class="scroll-mt-32">
+                <h2 class="font-display text-3xl font-bold mb-6 flex items-center gap-3">
+                    <span class="text-neon-cyan">02.</span> The New Threat Landscape
+                </h2>
+                <div class="glass-panel p-8 rounded-2xl mb-8 border-l-4 border-red-500">
+                    <h3 class="text-xl font-bold mb-4 text-white">The Rise of Autonomous Malware</h3>
+                    <p class="text-gray-300">
+                        By 2025, 40% of cyberattacks were initiated by autonomous agents capable of lateral movement
+                        without C2 (Command & Control) communication. These "silent" worms bypass traditional network
+                        traffic analysis.
+                    </p>
+                    <div class="mt-6 rounded-xl overflow-hidden border border-red-500/30">
+                        <img src="assets/images/threat_map.png" alt="Global Threat Map"
+                            class="w-full h-40 object-cover opacity-80 hover:opacity-100 transition-opacity">
+                    </div>
+                </div>
+                <div
+                    class="prose prose-invert prose-lg max-w-none text-gray-300/90 columns-1 md:columns-2 gap-8 text-justify">
+                    <p class="mb-4">
+                        The democratization of AI has armed bad actors with tools previously reserved for nation-states.
+                        Deepfake social engineering, polymorphic code generation, and automated zero-day discovery are
+                        now commoditized.
+                    </p>
+                    <p>
+                        Traditional endpoint protection (EDR) floods analysts with alerts. The average SOC (Security
+                        Operations Center) receives 10,000 alerts daily, leading to alert fatigue and missed critical
+                        signals. The solution is not better filtering, but autonomous handling.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Agentic Architecture -->
+            <section id="architecture" class="scroll-mt-32">
+                <h2 class="font-display text-3xl font-bold mb-6 flex items-center gap-3">
+                    <span class="text-neon-cyan">03.</span> Agentic Architecture
+                </h2>
+                <img src="assets/images/swarm_network.png" alt="Decentralized Swarm Network"
+                    class="w-full h-64 md:h-96 object-cover rounded-2xl mb-8 border border-neon-cyan/20 shadow-[0_0_30px_rgba(0,243,255,0.1)]">
+                <div
+                    class="prose prose-invert prose-lg max-w-none text-gray-300/90 columns-1 md:columns-2 gap-8 text-justify">
+                    <p class="mb-4">
+                        Our architecture rests on three pillars: <strong>Observation, Reasoning, and Action</strong>.
+                        Each endpoint hosts a micro-agent that continuously builds a local context graph of user
+                        behavior, process relationships, and network flows.
+                    </p>
+                    <p class="mb-4">
+                        <strong>1. Decentralized Intelligence:</strong> Instead of sending all data to a central cloud
+                        (creating latency and privacy risks), ParvatAI agents perform inference locally. They only
+                        transmit "intent signals" to the swarm.
+                    </p>
+                    <p>
+                        <strong>2. The Swarm Protocol:</strong> When one agent detects a novel threat (e.g., a new
+                        ransomware strain), it instantly shares the <em>behavioral signature</em> (not the file itself)
+                        with the entire network, immunizing all other endpoints within milliseconds.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Zero-Touch Configuration -->
+            <section id="zero-touch" class="scroll-mt-32">
+                <h2 class="font-display text-3xl font-bold mb-6 flex items-center gap-3">
+                    <span class="text-neon-cyan">04.</span> Zero-Touch & Privacy
+                </h2>
+                <div
+                    class="prose prose-invert prose-lg max-w-none text-gray-300/90 columns-1 md:columns-2 gap-8 text-justify">
+                    <p class="mb-4">
+                        Security tools often fail because they are too complex to configure. ParvatAI's "Zero-Touch"
+                        philosophy means the AI configures itself based on the environment it inhabits. It learns what
+                        "normal" looks like for a graphic designer versus a software engineer.
+                    </p>
+                    <p class="mb-4">
+                        <strong>Privacy by Design:</strong> We utilize Federated Learning. Your raw data never leaves
+                        your device. Only gradient updates are shared to improve the global model. This ensures
+                        compliance with GDPR, CCPA, and upcoming AI governance frameworks.
+                    </p>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-400">
+                        <li>Local-only PII processing</li>
+                        <li>Ephemeral data retention</li>
+                        <li>User-centric transparency logs</li>
+                    </ul>
+                </div>
+                <!-- Image: Secure Lock -->
+                <div class="mt-8 flex justify-center">
+                    <div
+                        class="relative w-full max-w-md aspect-video rounded-2xl overflow-hidden glass-panel border border-green-500/30 group">
+                        <div
+                            class="absolute inset-0 bg-green-500/10 opacity-0 group-hover:opacity-20 transition-opacity z-10">
+                        </div>
+                        <img src="assets/images/secure_lock.png" alt="Secure Data Lock"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Conclusion -->
+            <section id="conclusion" class="scroll-mt-32 border-b border-white/5 pb-16">
+                <h2 class="font-display text-3xl font-bold mb-6 flex items-center gap-3">
+                    <span class="text-neon-cyan">05.</span> Conclusion
+                </h2>
+                <div class="bg-gradient-to-br from-neon-cyan/5 to-neon-purple/5 p-8 rounded-2xl border border-white/10">
+                    <p class="text-xl text-white font-light leading-relaxed">
+                        "The war on cybercrime will not be won by larger firewalls, but by smarter agents. ParvatAI
+                        Solutions prevents the future by building it."
+                    </p>
+                </div>
+                <div class="mt-8 text-gray-400/80 text-lg">
+                    <p>
+                        For enterprise licensing and partnership inquiries, please contact our research division at <a
+                            href="#" class="text-neon-cyan hover:underline">research@parvataisolutions.in</a>.
+                    </p>
+                </div>
+            </section>
+
+        </article>
+
+        <!-- Right Sidebar (Table of Contents) -->
+        <aside
+            class="hidden lg:block lg:col-span-1 border-l border-white/5 pl-8 sticky top-32 h-[calc(100vh-160px)] overflow-y-auto">
+            <h4 class="font-display font-bold text-gray-400 uppercase tracking-widest text-xs mb-6">On This Page</h4>
+            <nav id="toc" class="space-y-1">
+                <a href="#cover"
+                    class="toc-link block py-2 border-l-2 border-transparent text-sm text-gray-500 hover:text-white transition-all pl-4 active">Introduction</a>
+                <a href="#executive-summary"
+                    class="toc-link block py-2 border-l-2 border-transparent text-sm text-gray-500 hover:text-white transition-all pl-4">01.
+                    Executive Summary</a>
+                <a href="#threat-landscape"
+                    class="toc-link block py-2 border-l-2 border-transparent text-sm text-gray-500 hover:text-white transition-all pl-4">02.
+                    Threat Landscape</a>
+                <a href="#architecture"
+                    class="toc-link block py-2 border-l-2 border-transparent text-sm text-gray-500 hover:text-white transition-all pl-4">03.
+                    Agentic Architecture</a>
+                <a href="#zero-touch"
+                    class="toc-link block py-2 border-l-2 border-transparent text-sm text-gray-500 hover:text-white transition-all pl-4">04.
+                    Zero-Touch & Privacy</a>
+                <a href="#conclusion"
+                    class="toc-link block py-2 border-l-2 border-transparent text-sm text-gray-500 hover:text-white transition-all pl-4">05.
+                    Conclusion</a>
+            </nav>
+
+            <div
+                class="mt-12 p-6 rounded-xl bg-gradient-to-r from-neon-purple/10 to-transparent border border-neon-purple/20">
+                <p class="text-xs text-neon-purple font-bold mb-2">UPCOMING WEBINAR</p>
+                <p class="text-sm text-white mb-4">Live Demo of Swarm Protocol v2.4</p>
+                <button
+                    class="text-xs bg-neon-purple px-4 py-2 rounded-lg text-white font-bold hover:bg-neon-purple/80 transition w-full">Register
+                    Now</button>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Footer Simple -->
+    <footer class="border-t border-white/5 py-8 text-center text-gray-600 text-sm">
+        <p>&copy; 2026 ParvatAI Solutions. All rights reserved.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Table of Contents Active State Logic
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px', // Trigger when section is near top of viewport
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const link = document.querySelector(`.toc-link[href="#${id}"]`);
+
+                if (entry.isIntersecting) {
+                    // Remove active class from all
+                    document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+                    // Add active class to current
+                    if (link) link.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+
+</html>
